@@ -8,7 +8,6 @@
 <body>
 <script src="assets/jquery-3.2.1.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-
 <?
     $host = '127.0.0.1';
     $db   = 'Graphics';
@@ -75,6 +74,5 @@
             echo '<h4>График '.$i++.'</h4>';
         }
 	?>
-
 </body>
 </html>
