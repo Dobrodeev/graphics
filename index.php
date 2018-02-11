@@ -2,32 +2,78 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Graphics</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css ">
 </head>
 <body>
-	<?
-		require_once('const.php');
-		$sth = new PDO('mysql:host=localhost;dbname=' . DB_CONNECTION_DB, DB_CONNECTION_USER, DB_CONNECTION_PASS);
+<script src="assets/jquery-3.2.1.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<?
+    $host = '127.0.0.1';
+    $db   = 'Graphics';
+    $user = 'root';
+    $pass = '';
+    $charset = 'utf8';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $opt = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+
+    $sth = new PDO($dsn, $user, $pass);
 		$query = 'SELECT * FROM question';
 		$q = $sth->query($query);
 		$arr = [];
         while ($row = $q->fetch())
         {
-           // echo var_dump($row);
             $arr[] = $row;
         }
-        $var = rand(0, 5);        
-        // echo var_dump($arr[$var]);
-        echo $arr[$var]['question'].' <img src="images/'.$arr[$var]['image'].'">';
-        // echo $arr['question'].' <img src="images/'.$r['image'].'">';
-        // echo $row['$var'].' <img src="images/'.$row['image'].'">';
-        // foreach ($arr as $key => $row) {
-        // 	echo $row['question'].' <img src="images/'.$row['image'].'">';
-        // }
-    // echo "Привет '$str'";
-    // echo '<br>';
-    // echo 'Привет "'.$str.'" !';
+    $var = rand(0, 42);
+    echo '<h5>'.$arr[$var]['question'].'</h5>';
+    ?>
+<label class="radio">
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> График 1<br>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 2<br>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 3<br>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 4<br>
+</label>
+<p>
+    <button class="btn btn-primary" type="button">Кнопка по умолчанию</button>
+    <button class="btn" type="button">Кнопка по умолчанию</button>
+</p>
+    <?
+    $rand_img = [];
+    $rand_img[] = $var;
 
+        while(count($rand_img) < 4)
+        {
+            $var2 = rand(0, 42);
+            if(!in_array($var2, $rand_img))
+            {
+                $rand_img[] = $var2;
+            }
+        }
+        echo '<br><br>';
+
+        function randValues($rand_array)
+        {
+            $rand = rand(0, 43);
+            if(in_array($rand, $rand_array)) $rand_array = randValues($rand_array);
+            $rand_array[] = $rand;
+            if(count($rand_array) < 4) $rand_array = randValues($rand_array);
+            return $rand_array;
+        }
+
+    shuffle($rand_img);
+    $i = 1;
+        foreach ($rand_img as $key)
+        {
+            echo  '<img src="images/'.$arr[$key]['image'].'">';
+            echo '<h4>График '.$i++.'</h4>';
+        }
 	?>
 
 </body>
