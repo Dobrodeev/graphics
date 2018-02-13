@@ -28,6 +28,7 @@ class Images
         }
         $this->images = $arr;
         $this->count_images = count($arr);
+        $this->get_true_image();
     }
     public function get_true_image()
     {
@@ -57,6 +58,11 @@ class Images
             $arr_images[] = $this->images[$index]['image'];
         }
         return $arr_images;
+    }
+    public function get_question()
+    {
+        $question = $this->images[$this->true_index]['question'];
+        return $question;
     }
     // make second index.php который работает на ООП
 }
