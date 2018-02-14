@@ -25,12 +25,19 @@
     $sth = new PDO($dsn, $user, $pass);
 		$query = 'SELECT * FROM question';
 		$q = $sth->query($query);
-		$arr = [];
+		$arr = [];// трехмерный массив массивов: массив { array1=>[id][вопрос][картинка], array2=>[id][][],...}
         while ($row = $q->fetch())
         {
             $arr[] = $row;
         }
-    $var = rand(0, 42);
+//        echo '<pre>';
+//        var_dump($arr);
+//        echo '</pre>';
+//        echo 'count($arr) = '.count($arr).'<br>';
+    //$var = rand(0, 42);
+    // избавляемся от магического числа 42. всего 43 картинки, а нумерация массива с 0 до 42.
+    $count_images = count($arr);
+    $var = rand(0, $count_images);
     echo '<h5>'.$arr[$var]['question'].'</h5>';
     ?>
 <label class="radio">
@@ -49,7 +56,7 @@
 
         while(count($rand_img) < 4)
         {
-            $var2 = rand(0, 42);
+            $var2 = rand(0, $count_images);
             if(!in_array($var2, $rand_img))
             {
                 $rand_img[] = $var2;
@@ -57,9 +64,9 @@
         }
         echo '<br><br>';
 
-        function randValues($rand_array)
+        function randValues($rand_array, $count_images)
         {
-            $rand = rand(0, 43);
+            $rand = rand(0, $count_images);
             if(in_array($rand, $rand_array)) $rand_array = randValues($rand_array);
             $rand_array[] = $rand;
             if(count($rand_array) < 4) $rand_array = randValues($rand_array);
