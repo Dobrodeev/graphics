@@ -8,8 +8,11 @@
 
 class ForHTML
 {
+    const GROUP = 'Steel Panther';
     // p, span, div
     public $string;
+    public $some_text;
+    public $text_inner;
 
     public function __construct()
     {
@@ -29,6 +32,8 @@ class ForHTML
     }
     public function get_all()
     {
-        echo $this->string;
+        echo $this->string.'<br>';
+        echo $this->some_text.'<br>';
+        echo $this->text_inner.'<br>';
     }
 }
