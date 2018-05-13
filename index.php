@@ -62,14 +62,14 @@
         }
         echo '<br><br>';
 
-        function randValues($rand_array, $count_images)
-        {
-            $rand = rand(0, $count_images);
-            if(in_array($rand, $rand_array)) $rand_array = randValues($rand_array);
-            $rand_array[] = $rand;
-            if(count($rand_array) < 4) $rand_array = randValues($rand_array);
-            return $rand_array;
-        }
+//        function randValues($rand_array, $count_images)
+//        {
+//            $rand = rand(0, $count_images);
+//            if(in_array($rand, $rand_array)) $rand_array = randValues($rand_array);
+//            $rand_array[] = $rand;
+//            if(count($rand_array) < 4) $rand_array = randValues($rand_array);
+//            return $rand_array;
+//        }
 
     shuffle($rand_img);
     $i = 1;
