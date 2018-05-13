@@ -30,10 +30,10 @@
         {
             $arr[] = $row;
         }
-        echo '<pre>';
-        print_r($arr);
-        echo '</pre>';
-        echo 'count($arr) = '.count($arr).'<br>';
+//        echo '<pre>';
+//        print_r($arr);
+//        echo '</pre>';
+//        echo 'count($arr) = '.count($arr).'<br>';
     $count_images = count($arr);
     $var = rand(0, $count_images);
     echo '<h5>'.$arr[$var]['question'].'</h5>';
