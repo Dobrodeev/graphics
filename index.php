@@ -30,12 +30,10 @@
         {
             $arr[] = $row;
         }
-//        echo '<pre>';
-//        var_dump($arr);
-//        echo '</pre>';
-//        echo 'count($arr) = '.count($arr).'<br>';
-    //$var = rand(0, 42);
-    // избавляемся от магического числа 42. всего 43 картинки, а нумерация массива с 0 до 42.
+        echo '<pre>';
+        print_r($arr);
+        echo '</pre>';
+        echo 'count($arr) = '.count($arr).'<br>';
     $count_images = count($arr);
     $var = rand(0, $count_images);
     echo '<h5>'.$arr[$var]['question'].'</h5>';
