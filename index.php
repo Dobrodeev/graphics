@@ -35,7 +35,7 @@
 //        echo '</pre>';
 //        echo 'count($arr) = '.count($arr).'<br>';
     $count_images = count($arr);
-    $var = rand(0, $count_images);
+    $var = mt_rand(0, $count_images);
     echo '<h5>'.$arr[$var]['question'].'</h5>';
     ?>
 <label class="radio">
@@ -54,7 +54,7 @@
 
         while(count($rand_img) < 4)
         {
-            $var2 = rand(0, $count_images);
+            $var2 = mt_rand(0, $count_images);
             if(!in_array($var2, $rand_img))
             {
                 $rand_img[] = $var2;
@@ -72,11 +72,11 @@
 //        }
 
     shuffle($rand_img);
-    $i = 1;
+    $counter = 1;
         foreach ($rand_img as $key)
         {
             echo  '<img src="images/'.$arr[$key]['image'].'">';
-            echo '<h4>График '.$i++.'</h4>';
+            echo '<h4>График '.$counter++.'</h4>';
         }
 	?>
 </body>
