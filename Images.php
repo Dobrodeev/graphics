@@ -3,7 +3,7 @@
 class Images
 {
     const HOST = '127.0.0.1';
-    const DB   = 'Graphics';
+    const DB   = 'graphics';
     const USER = 'root';
     const PASS = '';
     const CHARSET = 'utf8';
@@ -28,12 +28,16 @@ class Images
         }
         $this->images = $arr;
         $this->count_images = count($arr);
+//        echo 'Всего есть '.$this->count_images.' графиков функций<br>';
     }
+
     public function get_true_image()
     {
         $var = rand(0, $this->count_images);
         $this->true_index = $var;
+        echo '<h5>'.$this->images[$var]['question'].'</h5>';
     }
+
     public function  get_indexes()
     {
         $rand_img = [];
@@ -48,15 +52,22 @@ class Images
         }
         return $rand_img;
     }
+/** Используеим полуученный массив случайных индексов картинок и выводим мх изображения */
     public function get_all_image()
     {
-        $arr_images = [];
+//        $arr_images = [];
         $arr_indexes = $this->get_indexes();
+        shuffle($arr_indexes);
+        $counter = 1;
         foreach ($arr_indexes as $index)
         {
-            $arr_images[] = $this->images[$index]['image'];
+            echo  '<img src="images/'.$this->images[$index]['image'].'">';
+            echo '<h4>График '.$counter++.'</h4>';
         }
-        return $arr_images;
+//        echo '<pre>';
+//        print_r($arr_indexes);
+//        echo '</pre>';
+//        return $arr_images;
     }
     // make second index.php который работает на ООП
 }

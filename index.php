@@ -9,6 +9,7 @@
 <script src="assets/jquery-3.2.1.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <?
+/**
     $host = '127.0.0.1';
     $db   = 'Graphics';
     $user = 'root';
@@ -37,18 +38,74 @@
     $count_images = count($arr);
     $var = mt_rand(0, $count_images);
     echo '<h5>'.$arr[$var]['question'].'</h5>';
+ */
+spl_autoload_register(function ($className)
+{
+    include $className.'.php';
+});
+$questionGraphics = new Images(4);
+$questionGraphics->get_true_image();
+$questionGraphics->get_indexes();
+$questionGraphics->get_all_image();
     ?>
-<label class="radio">
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> График 1<br>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 2<br>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 3<br>
-    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" > График 4<br>
-</label>
-<p>
-    <button class="btn btn-primary" type="button">Кнопка по умолчанию</button>
-    <button class="btn" type="button">Кнопка по умолчанию</button>
-</p>
+<form action="#" method="post">
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputEmail1">Email address</label>-->
+<!--        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputPassword1">Password</label>-->
+<!--        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="exampleInputFile">File input</label>-->
+<!--        <input type="file" id="exampleInputFile">-->
+<!--        <p class="help-block">Example block-level help text here.</p>-->
+<!--    </div>-->
+<!--    <div class="checkbox">-->
+<!--        <label>-->
+<!--            <input type="checkbox"> Check me out-->
+<!--        </label>-->
+<!--    </div>-->
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Graphic 1
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Graphic 2
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+            Graphic 3
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+            Graphic 4
+        </label>
+    </div>
+<!--    <div class="radio disabled">-->
+<!--        <label>-->
+<!--            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>-->
+<!--            Option three is disabled-->
+<!--        </label>-->
+<!--    </div>-->
+    <button type="submit" class="btn btn-default" name="go">Submit</button>
+</form>
     <?
+    // сделать новый файл - обработчик результатов формы: 1 вопрос - верно, 2 вопрос - не верно и так до N-вопросов
+    // результат занести в таблицу и провести анализ: из 20-ти вопрос верных ответов 13, тоесть 13%, оценка С или D
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+    /**
     $rand_img = [];
     $rand_img[] = $var;
 
@@ -78,6 +135,7 @@
             echo  '<img src="images/'.$arr[$key]['image'].'">';
             echo '<h4>График '.$counter++.'</h4>';
         }
+    */
 	?>
 </body>
 </html>
