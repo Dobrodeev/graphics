@@ -67,30 +67,33 @@ $questionGraphics->get_all_image();
 <!--            <input type="checkbox"> Check me out-->
 <!--        </label>-->
 <!--    </div>-->
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-            Graphic 1
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-            Graphic 2
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-            Graphic 3
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-            Graphic 4
-        </label>
-    </div>
+<!--    <div class="radio">-->
+<!--        <label>-->
+<!--            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>-->
+<!--            Graphic 1-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    <div class="radio">-->
+<!--        <label>-->
+<!--            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">-->
+<!--            Graphic 2-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    <div class="radio">-->
+<!--        <label>-->
+<!--            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">-->
+<!--            Graphic 3-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    <div class="radio">-->
+<!--        <label>-->
+<!--            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">-->
+<!--            Graphic 4-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    --><?php //$questionGraphics->getAllIndexes(); ?>
+
+    <input type="hidden" name="trueVariant" value="<? $questionGraphics->getTrueIndex()?>">
 <!--    <div class="radio disabled">-->
 <!--        <label>-->
 <!--            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>-->
@@ -102,9 +105,16 @@ $questionGraphics->get_all_image();
     <?
     // сделать новый файл - обработчик результатов формы: 1 вопрос - верно, 2 вопрос - не верно и так до N-вопросов
     // результат занести в таблицу и провести анализ: из 20-ти вопрос верных ответов 13, тоесть 13%, оценка С или D
+//    if ($_POST['go'])
+//    {
+//        echo '<pre>';
+//        print_r($_POST);
+//        echo '</pre>';
+//    }
     echo '<pre>';
     print_r($_POST);
     echo '</pre>';
+
     /**
     $rand_img = [];
     $rand_img[] = $var;

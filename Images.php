@@ -38,6 +38,13 @@ class Images
         echo '<h5>'.$this->images[$var]['question'].'</h5>';
     }
 
+    public function getTrueIndex()
+    {
+        $index = $this->true_index;
+        $index++;
+        echo $index;
+    }
+
     public function  get_indexes()
     {
         $rand_img = [];
@@ -52,22 +59,60 @@ class Images
         }
         return $rand_img;
     }
+
+    public function getAllIndexes()
+    {
+        $arrIndexes = $this->get_indexes();
+        $i = 1;
+        foreach ($arrIndexes as $index)
+        {
+//            echo ++$index.' ';
+            echo '    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
+            Graphic '.$i++.'
+        </label>
+    </div>';
+            echo $index.' ';
+        }
+    }
 /** Используеим полуученный массив случайных индексов картинок и выводим мх изображения */
     public function get_all_image()
     {
 //        $arr_images = [];
-        $arr_indexes = $this->get_indexes();
-        shuffle($arr_indexes);
+        $arrIndexes = $this->get_indexes();
+        echo '<pre>';
+        print_r($arrIndexes);
+        echo '</pre>';
+        shuffle($arrIndexes);
+        echo '<pre>';
+        print_r($arrIndexes);
+        echo '</pre>';
+        $i = 1;
+        foreach ($arrIndexes as $index)
+        {
+//            echo ++$index.' ';
+            echo '    <div class="radio">
+        <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
+            Graphic '.$i++.'
+        </label>
+    </div>';
+            echo $index.' ';
+        }
+        echo '<h5>Выбираем график</h5>';
         $counter = 1;
-        foreach ($arr_indexes as $index)
+        foreach ($arrIndexes as $index)
         {
             echo  '<img src="images/'.$this->images[$index]['image'].'">';
             echo '<h4>График '.$counter++.'</h4>';
         }
-//        echo '<pre>';
-//        print_r($arr_indexes);
-//        echo '</pre>';
-//        return $arr_images;
+
+        $arrIndexes = $this->get_indexes();
+        /**
+        echo '<pre>';
+        print_r($arrIndexes);
+        echo '</pre>';
+        */
     }
-    // make second index.php который работает на ООП
 }
