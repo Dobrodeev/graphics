@@ -48,7 +48,7 @@ $questionGraphics->get_true_image();
 $questionGraphics->get_indexes();
 
     ?>
-<form action="#" method="post">
+<form action="checkResult.php" method="post">
 <!--    <div class="form-group">-->
 <!--        <label for="exampleInputEmail1">Email address</label>-->
 <!--        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
@@ -111,9 +111,9 @@ $questionGraphics->get_indexes();
 //        print_r($_POST);
 //        echo '</pre>';
 //    }
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
+//    echo '<pre>';
+//    print_r($_POST);
+//    echo '</pre>';
 
     /**
     $rand_img = [];
