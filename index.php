@@ -46,7 +46,7 @@ spl_autoload_register(function ($className)
 $questionGraphics = new Images(4);
 $questionGraphics->get_true_image();
 $questionGraphics->get_indexes();
-$questionGraphics->get_all_image();
+
     ?>
 <form action="#" method="post">
 <!--    <div class="form-group">-->
@@ -91,8 +91,8 @@ $questionGraphics->get_all_image();
 <!--            Graphic 4-->
 <!--        </label>-->
 <!--    </div>-->
-<!--    --><?php //$questionGraphics->getAllIndexes(); ?>
-
+<!--    -->
+    <?php $questionGraphics->get_all_image(); ?>
     <input type="hidden" name="trueVariant" value="<? $questionGraphics->getTrueIndex()?>">
 <!--    <div class="radio disabled">-->
 <!--        <label>-->
