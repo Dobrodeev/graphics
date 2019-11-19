@@ -3,7 +3,7 @@
 class Images
 {
     const HOST = '127.0.0.1';
-    const DB   = 'graphics';
+    const DB = 'graphics';
     const USER = 'root';
     const PASS = '';
     const CHARSET = 'utf8';
@@ -22,8 +22,7 @@ class Images
         $query = 'SELECT * FROM question';
         $sth = $this->db_conn->query($query);
         $arr = [];
-        while ($row = $sth->fetch())
-        {
+        while ($row = $sth->fetch()) {
             $arr[] = $row;
         }
         $this->images = $arr;
@@ -35,7 +34,7 @@ class Images
     {
         $var = rand(0, $this->count_images);
         $this->true_index = $var;
-        echo '<h5>'.$this->images[$var]['question'].'</h5>';
+        echo '<h5>' . $this->images[$var]['question'] . '</h5>';
     }
 
     public function getTrueIndex()
@@ -45,15 +44,13 @@ class Images
         echo $index;
     }
 
-    public function  get_indexes()
+    public function get_indexes()
     {
         $rand_img = [];
         $rand_img[] = $this->true_index;
-        while(count($rand_img) < $this->count_result)
-        {
+        while (count($rand_img) < $this->count_result) {
             $var2 = rand(0, $this->count_images);
-            if(!in_array($var2, $rand_img))
-            {
+            if (!in_array($var2, $rand_img)) {
                 $rand_img[] = $var2;
             }
         }
@@ -64,19 +61,19 @@ class Images
     {
         $arrIndexes = $this->get_indexes();
         $i = 1;
-        foreach ($arrIndexes as $index)
-        {
+        foreach ($arrIndexes as $index) {
 //            echo ++$index.' ';
             echo '    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
-            Graphic '.$i++.'
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="' . ++$index . '">
+            Graphic ' . $i++ . '
         </label>
     </div>';
-            echo $index.' ';
+            echo $index . ' ';
         }
     }
-/** Используеим полуученный массив случайных индексов картинок и выводим мх изображения */
+
+    /** Используеим полуученный массив случайных индексов картинок и выводим мх изображения */
     public function get_all_image()
     {
 //        $arr_images = [];
@@ -89,30 +86,28 @@ class Images
         print_r($arrIndexes);
         echo '</pre>';
         $i = 1;
-        foreach ($arrIndexes as $index)
-        {
+        foreach ($arrIndexes as $index) {
 //            echo ++$index.' ';
             echo '    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
-            Graphic '.$i++.'
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="' . ++$index . '">
+            Graphic ' . $i++ . '
         </label>
     </div>';
-            echo $index.' ';
+            echo $index . ' ';
         }
         echo '<h5>Выбираем график</h5>';
         $counter = 1;
-        foreach ($arrIndexes as $index)
-        {
-            echo  '<img src="images/'.$this->images[$index]['image'].'">';
-            echo '<h4>График '.$counter++.'</h4>';
+        foreach ($arrIndexes as $index) {
+            echo '<img src="images/' . $this->images[$index]['image'] . '">';
+            echo '<h4>График ' . $counter++ . '</h4>';
         }
 
         $arrIndexes = $this->get_indexes();
         /**
-        echo '<pre>';
-        print_r($arrIndexes);
-        echo '</pre>';
-        */
+         * echo '<pre>';
+         * print_r($arrIndexes);
+         * echo '</pre>';
+         */
     }
 }
