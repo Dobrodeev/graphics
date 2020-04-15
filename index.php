@@ -9,10 +9,11 @@
 <script src="assets/jquery-3.2.1.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <?php
+define('COUNT_QUESTIONS', 4);
 spl_autoload_register(function ($className) {
     include $className.'.php';
 });
-$questionGraphics = new Images(4);
+$questionGraphics = new Images(COUNT_QUESTIONS);
 $questionGraphics->get_true_image();
 $questionGraphics->get_indexes();
 ?>
