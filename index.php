@@ -9,8 +9,13 @@
 <script src="assets/jquery-3.2.1.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <?php
+/**
+ * количество ответов на вопрос
+ */
 define('COUNT_QUESTIONS', 4);
-spl_autoload_register(function ($className) {
+spl_autoload_register(/**
+ * @param $className
+ */ function ($className) {
     include $className.'.php';
 });
 $questionGraphics = new Images(COUNT_QUESTIONS);
