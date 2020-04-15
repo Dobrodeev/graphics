@@ -1,23 +1,67 @@
 <?php
 
+/**
+ * Class Images
+ * @package graphics
+ * @author Rytov Anton
+ * @copyright 2018
+ */
 class Images
 {
+    /**
+     *
+     */
     const HOST = '127.0.0.1';
+    /**
+     *
+     */
     const DB = 'graphics';
+    /**
+     *
+     */
     const USER = 'root';
+    /**
+     *
+     */
     const PASS = '';
+    /**
+     *
+     */
     const CHARSET = 'utf8';
 
+    /**
+     * @var PDO
+     */
     private $db_conn;
+    /**
+     * @var array
+     */
     private $images;
+    /**
+     * индекс правильного отвнта на вопрос
+     * @var
+     */
     private $true_index;
+    /**
+     * количество вариантов ответа на вопрос
+     * @var int
+     */
     private $count_images;
+    /**
+     * @var
+     */
     private $count_result;
 
+    /**
+     * создает вопрос и $count_result например 4 варианта ответа
+     * Всего есть $this->count_images графиков функций
+     * Images constructor.
+     * @param $count_result
+     */
     public function __construct($count_result)
     {
         $this->count_result = $count_result;
-        $dsn = "mysql:host=" . self::HOST . ";dbname=" . self::DB . ";charset=" . self::CHARSET;
+        $dsn = "mysql:host=".self::HOST.";dbname=".self::DB.";charset=".self::CHARSET;
         $this->db_conn = new PDO($dsn, self::USER, self::PASS);
         $query = 'SELECT * FROM question';
         $sth = $this->db_conn->query($query);
@@ -27,16 +71,21 @@ class Images
         }
         $this->images = $arr;
         $this->count_images = count($arr);
-//        echo 'Всего есть '.$this->count_images.' графиков функций<br>';
     }
 
+    /**
+     * получаем правильный ответ на вопрос (в данном случае правильное изображение графика функции)
+     */
     public function get_true_image()
     {
         $var = rand(0, $this->count_images);
         $this->true_index = $var;
-        echo '<h5>' . $this->images[$var]['question'] . '</h5>';
+        echo '<h5>'.$this->images[$var]['question'].'</h5>';
     }
 
+    /**
+     * получаем индекс правильного ответа на вопрос
+     */
     public function getTrueIndex()
     {
         $index = $this->true_index;
@@ -44,6 +93,10 @@ class Images
         echo $index;
     }
 
+    /**
+     * генерируем неправильные ответы на вопрос
+     * @return array
+     */
     public function get_indexes()
     {
         $rand_img = [];
@@ -57,6 +110,9 @@ class Images
         return $rand_img;
     }
 
+    /**
+     * собирамем правильные и неправильные ответы вместе
+     */
     public function getAllIndexes()
     {
         $arrIndexes = $this->get_indexes();
@@ -65,49 +121,37 @@ class Images
 //            echo ++$index.' ';
             echo '    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="' . ++$index . '">
-            Graphic ' . $i++ . '
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
+            Graphic '.$i++.'
         </label>
     </div>';
-            echo $index . ' ';
+            echo $index.' ';
         }
     }
 
-    /** Используеим полуученный массив случайных индексов картинок и выводим мх изображения */
+    /**
+     * Используеим полуученный массив случайных индексов картинок и выводим мх изображения
+     */
     public function get_all_image()
     {
-//        $arr_images = [];
         $arrIndexes = $this->get_indexes();
-        echo '<pre>';
-        print_r($arrIndexes);
-        echo '</pre>';
         shuffle($arrIndexes);
-        echo '<pre>';
-        print_r($arrIndexes);
-        echo '</pre>';
         $i = 1;
         foreach ($arrIndexes as $index) {
-//            echo ++$index.' ';
             echo '    <div class="radio">
         <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="' . ++$index . '">
-            Graphic ' . $i++ . '
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
+            Graphic '.$i++.'
         </label>
     </div>';
-            echo $index . ' ';
+            echo $index.' ';
         }
         echo '<h5>Выбираем график</h5>';
         $counter = 1;
         foreach ($arrIndexes as $index) {
-            echo '<img src="images/' . $this->images[$index]['image'] . '">';
-            echo '<h4>График ' . $counter++ . '</h4>';
+            echo '<img src="images/'.$this->images[$index]['image'].'">';
+            echo '<h4>График '.$counter++.'</h4>';
         }
-
         $arrIndexes = $this->get_indexes();
-        /**
-         * echo '<pre>';
-         * print_r($arrIndexes);
-         * echo '</pre>';
-         */
     }
 }
