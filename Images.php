@@ -109,25 +109,7 @@ class Images
         }
         return $rand_img;
     }
-
-    /**
-     * собирамем правильные и неправильные ответы вместе
-     */
-    /*public function getAllIndexes()
-    {
-        $arrIndexes = $this->get_indexes();
-        $i = 1;
-        foreach ($arrIndexes as $index) {
-            echo '    <div class="radio">
-        <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="'.++$index.'">
-            Graphic '.$i++.'
-        </label>
-    </div>';
-            echo $index.' ';
-        }
-    }*/
-
+    
     /**
      * Используеим полученный массив случайных индексов картинок и выводим мх изображения
      */
