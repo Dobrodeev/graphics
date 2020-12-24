@@ -19,7 +19,9 @@ spl_autoload_register(/**
     include $className.'.php';
 });
 $questionGraphics = new Images(COUNT_QUESTIONS);
+// вопрос
 $questionGraphics->get_true_image();
+// варианты ответов
 $questionGraphics->get_indexes();
 ?>
 <form action="checkResult.php" method="post">

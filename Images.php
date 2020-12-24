@@ -74,7 +74,7 @@ class Images
     }
 
     /**
-     * получаем правильный ответ на вопрос (в данном случае правильное изображение графика функции)
+     * формируем ответ на вопрос
      */
     public function get_true_image()
     {
@@ -113,7 +113,7 @@ class Images
     /**
      * собирамем правильные и неправильные ответы вместе
      */
-    public function getAllIndexes()
+    /*public function getAllIndexes()
     {
         $arrIndexes = $this->get_indexes();
         $i = 1;
@@ -126,7 +126,7 @@ class Images
     </div>';
             echo $index.' ';
         }
-    }
+    }*/
 
     /**
      * Используеим полученный массив случайных индексов картинок и выводим мх изображения
