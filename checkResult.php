@@ -8,7 +8,7 @@
 include 'index.php';
     if (isset($_POST['go']))
     {
-        echo '<pre>';
+        /*echo '<pre>';
         print_r($_POST);
-        echo '</pre>';
+        echo '</pre>';*/
     }

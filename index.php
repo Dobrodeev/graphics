@@ -24,9 +24,9 @@ $questionGraphics->get_true_image();
 // варианты ответов
 $questionGraphics->get_indexes();
 ?>
-<form action="checkResult.php" method="post">
+<form action="<!--checkResult.php-->" method="post">
     <?php $questionGraphics->get_all_image(); ?>
-    <input type="hidden" name="trueVariant" value="<? $questionGraphics->getTrueIndex() ?>">
+<!--    <input type="hidden" name="trueVariant" value="--><?// $questionGraphics->getTrueIndex() ?><!--">-->
     <button type="submit" class="btn btn-default" name="go">Submit</button>
 </form>
 <?php ?>
